@@ -1,0 +1,147 @@
+<div class="row mb-4">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header bg-white font-weight-bold">
+              Vehicles
+          </div>
+          <div class="card-body">
+              <div class="col-md-12">
+                  <div class="content">
+                      <table class="table">
+                          <thead class="thead-dark">
+                            <tr>
+                              <th>Vehicle Number</th>
+                              <th>Vehicle Brand</th>
+                              <th>Fuel Type</th>
+                              <th>Driver Name</th>
+                              <th>Mobile No.</th>
+                              <th>TC</th>
+                              <th>RC</th>
+                              <th>Insurence</th>
+                              <th>Fitness</th>
+                              <th>Invoice</th>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let vh of vehicledata">
+                                  <td>{{vh.vehicle_number}}</td>
+                                  <td>{{vh.vehicle_brand}}</td>
+                                  <td>{{vh.fuel_type}}</td>
+                                  <td>{{vh.driver_name}}</td>
+                                  <td>{{vh.driver_mobile_number}}</td>
+                                  <td><button (click)="viewTC(vh)" data-toggle="modal" data-target="#tcModal">View TC</button></td>
+                                  <td><button (click)="viewRC(vh)" data-toggle="modal" data-target="#rcModal">View RC</button></td>
+                                  <td><button (click)="viewIC(vh)" data-toggle="modal" data-target="#icModal">View Insurence</button></td>
+                                  <td><button (click)="viewFC(vh)" data-toggle="modal" data-target="#fcModal">View Fitness</button></td>
+                                  <td><button (click)="viewInvoice(vh)" data-toggle="modal" data-target="#invoiceModal">View Invoice</button></td>
+                                  <td><button>Edit</button><button>Delete</button></td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <!-- The TC Modal -->
+                        <div class="modal" id="tcModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">TC for {{vehicleSelected.vehicle_number}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <img class="img-fluid" [src]="vehicleSelected.tc" alt="" srcset="">
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      <!-- The RC Modal -->
+                      <div class="modal" id="rcModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">RC for {{vehicleSelected.vehicle_number}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <img class="img-fluid" [src]="vehicleSelected.registation_doc" alt="" srcset="">
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- The IC Modal -->
+                      <div class="modal" id="icModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Insurence for {{vehicleSelected.vehicle_number}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <img class="img-fluid" [src]="vehicleSelected.insurence_doc" alt="" srcset="">
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                          <!-- The FC Modal -->
+                      <div class="modal" id="fcModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Fitness Certificate for {{vehicleSelected.vehicle_number}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <img class="img-fluid" [src]="vehicleSelected.fitness" alt="" srcset="">
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- The Invoice Modal -->
+                      <div class="modal" id="invoiceModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Fitness Certificate for {{vehicleSelected.vehicle_number}}</h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="modal-body">
+                                        <img class="img-fluid" [src]="vehicleSelected.fitness" alt="" srcset="">
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

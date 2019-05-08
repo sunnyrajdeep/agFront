@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+app-root{
+    display: block;
+    width: 100%;
+}
+app-add-project{
+    display: block;
+    width: 100%;
+}
+app-add-reading{
+    display: block;
+    width: 100%;
+}
+
+app-vehicle{
+    display: block;
+    width: 100%;
+}
+
+app-login{
+    display: block;
+    width: 100%;
+}
+
+app-register,app-add-vehicle{
+    display: block;
+    width: 100%;
+}
+
+.vhcln{
+    width: inherit !important;
+}

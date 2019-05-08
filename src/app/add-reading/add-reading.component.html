@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header bg-white font-weight-bold">
+              Add Reading
+          </div>
+          <div class="card-body">
+              <div class="col-md-12">
+                  <div class="content">
+                      <form class="form-inline" (ngSubmit)="addReading(addreadingForm.value)" [formGroup]="addreadingForm">
+                        <div class="form-group col-md-2">
+                            <label>Vehicle Number</label>
+                            <select [(ngModel)]="vehicleNo" formControlName="vehicle_no" type="text" class="form-control" name="vehicle_no">
+                                <option *ngFor="let hero of vehicle_numbers" [value]="hero.vehicle_number">{{hero.vehicle_number}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Date of Journey</label>
+                            <input (focusout)="populateLastReading(vehicleNo)" [(ngModel)]="dateOfJourney" formControlName="date_of_journey" type="date" id="date_of_journey" class="form-control" name="date_of_journey">
+                        </div>
+                        <div class="form-group col-md-2">
+                                <label>Time</label>
+                                <input formControlName="time" type="time" class="form-control" name="time">
+                            </div>
+                        <div class="form-group col-md-2">
+                            <label>Day Start Reading</label>
+                            <input [(ngModel)]="day_start_reading" formControlName="day_start_reading" type="number" class="form-control" name="day_start_reading">
+                            
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Day End Reading</label>
+                            <input [(ngModel)]="day_end_reading" formControlName="day_end_reading" (focusout)="focusOutFunction()" type="number" class="form-control" name="day_end_reading" placeholder="">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label>Total Day Kms</label>
+                            <input [(ngModel)]="total_kms" formControlName="day_kms" type="text" class="form-control" name="day_kms">
+                        </div>
+                        <div>
+                            <div class="form-group col-md-6">
+                                <label>Locations Visited</label>
+                                <textarea  formControlName="locations_visited" cols="20" rows="2" class="form-control" name="locations_visited"></textarea>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Remark</label>
+                                <textarea formControlName="remark" cols="20" rows="2" class="form-control" name="expense_for_maintenance"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-simple" type="submit">Submit</button>
+                            </div>
+                        </div>
+                      </form>
+                      
+                      <p (click)="records()">get</p>
+                  </div>
+              </div>
+          </div>
+          <table class="table table-stripped">
+              <thead>
+                <tr>
+                    <th>Vehicle Number</th>
+                    <th>Date of Journey</th>
+                    <th>Time</th>
+                    <th>Day Start Reading</th>
+                    <th>Day End Reading</th>
+                    <th>Total Day Kms</th>
+                    <th>Locations Visited</th>
+                    <th>Remark</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let r of readings">
+                      <td>{{r.vehicle_number}}</td>
+                      <td>{{r.date_of_journey}}</td>
+                      <td>{{r.time}}</td>
+                      <td>{{r.day_start_reading}}</td>
+                      <td>{{r.day_end_reading}}</td>
+                      <td>{{r.day_kms}}</td>
+                      <td>{{r.location_visited}}</td>
+                      <td>{{r.remark}}</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

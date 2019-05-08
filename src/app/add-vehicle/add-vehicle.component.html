@@ -1,0 +1,142 @@
+<!-- <div class="col-md-12">
+<form [formGroup]="Userform" (ngSubmit)="onSubmit(Userform.value)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" formControlName="Email" placeholder="Enter email">
+      
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" formControlName="Password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">File</label>
+        <input type="file" class="form-control" id="file" #UserImage formControlName="UserImage">
+      </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="!Userform.valid">Submit</button>
+  </form>
+</div> -->
+
+<div class="row mb-4">
+  <div class="col-md-8">
+      <div class="card">
+          <div class="card-header bg-white font-weight-bold">
+              Add Vehicle Data
+          </div>
+          <div class="card-body">
+              <div class="col-md-12">
+                  <div class="content">
+                      
+                      <form #addVehiclform="ngForm" (ngSubmit)="addVehicle()">
+                          <div class="col-md-12">
+                              <div class="col-md-8">
+                                  <div class="form-group">
+                                      <label>Vehicle Brand</label>
+                                      <input [(ngModel)]="newVehicleModel.vehicle_brand" type="text" class="form-control" name="vehicle_no" required>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Vehicle Number</label>
+                                      <input hidden [(ngModel)]="newVehicleModel.vehicle_number" type="text" class="form-control" name="vehicle_number" required>
+                                      <div class="form-inline">
+                                            <div class="col-md-2">
+                                                <input type="text" name="mh" [(ngModel)]="vn_stat" ng-maxlength="2" ng-value="MH" id="mh" class="form-control vhcln" required>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="text" name="dn" [(ngModel)]="vn_dst" ng-maxlength="2" id="vn_dst" class="form-control vhcln" required>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="text" name="st"  #st="ngModel" [(ngModel)]="vn_sub" maxlength="2" id="vn_sub" class="form-control vhcln" required>
+                                                <small [class.is-invalid]="st.invalid && st.touched" *ngIf="st.invalid && st.touched">Required</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="vn" [(ngModel)]="vn_number" #vn="ngModel" (focusout)="onfocusOut()" id="" class="form-control" ng-maxlength="4" required>
+                                                <small [class.is-invalid]="vn.invalid && vn.touched" *ngIf="vn.invalid && vn.touched">Required</small>
+                                            </div>
+                                        </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label>Fuel Type</label>
+                                      <select [(ngModel)]="newVehicleModel.fuel_type" type="number" class="form-control" name="day_start_reading" required>
+                                        <option value="Petrol">Petrol</option>
+                                        <option value="Disel">Diesel</option>
+                                        <option value="CNG">CNG</option>
+                                      </select>
+                                  </div>
+                                  <div class="form-group">
+                                    <input type="file" name="tc" ng2FileSelect [uploader]="uploaderTC" />
+                                    <button type="button" class="btn btn-success btn-s" 
+                                    (click)="uploaderTC.uploadAll()">
+                                        Upload TC Image
+                                    </button>
+                                    {{newVehicleModel.tc}}
+                                </div>
+                                <div class="form-group">
+                                  <input type="file" name="rc" ng2FileSelect [uploader]="uploaderRC" />
+                                  <button type="button" class="btn btn-success btn-s" 
+                                  (click)="uploaderRC.uploadAll()">
+                                      Upload RC Image
+                                  </button>
+                                  {{newVehicleModel.rc}}
+                                </div>
+                                  <div class="form-group">
+                                  <input type="file" name="puc" ng2FileSelect [uploader]="uploaderPUC" />
+                                  <button type="button" class="btn btn-success btn-s" 
+                                  (click)="uploaderPUC.uploadAll()">
+                                      Upload PUC Image
+                                  </button>
+                                  {{newVehicleModel.puc}}
+                                </div>
+                                  <div class="form-group">
+                                  <input type="file" name="fc" ng2FileSelect [uploader]="uploaderFC" />
+                                  <button type="button" class="btn btn-success btn-s" 
+                                  (click)="uploaderFC.uploadAll()">
+                                      Upload Fitness  Image
+                                  </button>
+                                  {{newVehicleModel.fc}}
+                                </div>
+                                  <div class="form-group">
+                                  <input type="file" name="ic" ng2FileSelect [uploader]="uploaderIC" />
+                                  <button type="button" class="btn btn-success btn-s" 
+                                  (click)="uploaderIC.uploadAll()">
+                                      Upload Insurence Image
+                                  </button>
+                                  {{newVehicleModel.ic}}
+                                </div>
+                                  <div class="form-group">
+                                    <input type="file" name="invoice" ng2FileSelect [uploader]="uploaderInvoice" />
+                                    <button type="button" class="btn btn-success btn-s" 
+                                    (click)="uploaderInvoice.uploadAll()">
+                                        Upload Invoice Image
+                                    </button>
+                                    {{newVehicleModel.invoice}}
+                                </div>
+                                  <div class="form-group">
+                                      <label>Driver Name</label>
+                                      <input [(ngModel)]="newVehicleModel.driver_name" type="text" class="form-control" name="driver_name" placeholder="Driver Name">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Driver's Mobile No.</label>
+                                    <input [(ngModel)]="newVehicleModel.driver_mobile_number" type="text" class="form-control" name="driver_mobile_number">
+                                  </div>
+                                  <div class="form-group">
+                                    <label>Initial Reading</label>
+                                    <input [(ngModel)]="newVehicleModel.initial_reading" type="text" class="form-control" name="initial_reading">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-12">
+                              <div class="form-group">
+                                  <button [disabled]="addVehiclform.form.invalid" type="submit" class="btn btn-simple" type="submit">Submit</button>
+                              </div>
+                          </div>
+                      </form>
+                      {{successMsg}}
+                      
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

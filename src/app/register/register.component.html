@@ -1,0 +1,41 @@
+<div class="col-md-5">
+    <div class="formbody">
+        <form style="width:100%;" (ngSubmit)="register(regform.value)" [formGroup]="regform">
+            <div class="header">Add User</div>
+            <div>                
+                <input type="text" formControlName="email" matInput placeholder="Email" id="email" class="form-control">
+                <span *ngIf="isValid('email')">Entered email is invalid</span>
+            </div>
+            <div>
+               <input type="text" formControlName="username" matInput placeholder="Username" id="user" class="form-control">
+                
+                <span *ngIf="isValid('username')">Username is required</span>
+            </div>
+            <div>
+                <input type="password" formControlName="password" matInput placeholder="Password" id="pass" class="form-control">
+                
+                <span *ngIf="isValid('password')">Password is a mandatory field</span>
+            </div>
+            <div>
+                
+                    <input type="password" formControlName="confirmPassword" matInput placeholder="Re-enter Password" id="cnfpass" class="form-control">
+                
+                <span *ngIf="isValid('confirmPassword')">Password and confirm password should match</span>
+            </div>
+            <div style="margin-top:20px;">
+                <button type="submit" class="btn btn-success" >Register</button>
+            </div>
+
+
+            <div style="text-align: center;">                
+                {{successMsg}}
+            </div>
+        </form>
+    </div>
+
+    <div>
+        
+            <button class="btn btn-primary" (click)="movetologin()">Login</button>
+        
+    </div>
+</div>
