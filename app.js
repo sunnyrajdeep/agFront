@@ -1,4 +1,4 @@
-// set up ======================================================================
+// set up ====================================================================== https://medium.freecodecamp.org/securing-node-js-restful-apis-with-json-web-tokens-9f811a92bb52
 var express = require('express');
 var app = express(); 
 var mysql = require('mysql');					// create our app w/ express	
